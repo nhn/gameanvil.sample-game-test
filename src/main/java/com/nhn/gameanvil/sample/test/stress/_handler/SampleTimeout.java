@@ -1,7 +1,7 @@
-package com.nhn.gameflex.sample.test.stress._handler;
+package com.nhn.gameanvil.sample.test.stress._handler;
 
-import com.nhn.gameflexcore.connector.callback.parent.IDispatchPacketTimeout;
-import com.nhn.gameflexcore.connector.tcp.agent.parent.IAsyncConnectorUser;
+import com.nhn.gameanvilcore.connector.callback.parent.IDispatchPacketTimeout;
+import com.nhn.gameanvilcore.connector.tcp.agent.parent.IAsyncConnectorUser;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

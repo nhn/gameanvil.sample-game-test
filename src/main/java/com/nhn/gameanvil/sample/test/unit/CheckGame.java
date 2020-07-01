@@ -1,34 +1,34 @@
-package com.nhn.gameflex.sample.test.unit;
+package com.nhn.gameanvil.sample.test.unit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.nhn.gameflex.sample.protocol.Authentication;
-import com.nhn.gameflex.sample.protocol.Authentication.LoginType;
-import com.nhn.gameflex.sample.protocol.GameMulti;
-import com.nhn.gameflex.sample.protocol.GameMulti.TapBirdUserData;
-import com.nhn.gameflex.sample.protocol.GameSingle;
-import com.nhn.gameflex.sample.protocol.GameSingle.DifficultyType;
-import com.nhn.gameflex.sample.protocol.GameSingle.EndType;
-import com.nhn.gameflex.sample.protocol.GameSingle.TapMsg;
-import com.nhn.gameflex.sample.protocol.Result.ErrorCode;
-import com.nhn.gameflex.sample.protocol.User;
-import com.nhn.gameflex.sample.protocol.User.CurrencyType;
-import com.nhn.gameflex.sample.test.common.GameConstants;
-import com.nhn.gameflex.sample.test.common.Initializer;
-import com.nhn.gameflexcore.connector.common.Config;
-import com.nhn.gameflexcore.connector.protocol.result.AuthenticationResult;
-import com.nhn.gameflexcore.connector.protocol.result.CreateRoomResult;
-import com.nhn.gameflexcore.connector.protocol.result.LeaveRoomResult;
-import com.nhn.gameflexcore.connector.protocol.result.LoginResult;
-import com.nhn.gameflexcore.connector.protocol.result.MatchRoomResult;
-import com.nhn.gameflexcore.connector.protocol.result.MatchUserStartResult;
-import com.nhn.gameflexcore.connector.tcp.ConnectorSession;
-import com.nhn.gameflexcore.connector.tcp.ConnectorUser;
-import com.nhn.gameflexcore.connector.tcp.GameflexConnector;
-import com.nhn.gameflexcore.protocol.Base;
-import com.nhn.gameflexcore.protocol.Base.ResultCodeMatchRoom;
+import com.nhn.gameanvil.sample.test.common.GameConstants;
+import com.nhn.gameanvil.sample.test.common.Initializer;
+import com.nhn.gameanvil.sample.protocol.Authentication;
+import com.nhn.gameanvil.sample.protocol.Authentication.LoginType;
+import com.nhn.gameanvil.sample.protocol.GameMulti;
+import com.nhn.gameanvil.sample.protocol.GameMulti.TapBirdUserData;
+import com.nhn.gameanvil.sample.protocol.GameSingle;
+import com.nhn.gameanvil.sample.protocol.GameSingle.DifficultyType;
+import com.nhn.gameanvil.sample.protocol.GameSingle.EndType;
+import com.nhn.gameanvil.sample.protocol.GameSingle.TapMsg;
+import com.nhn.gameanvil.sample.protocol.Result.ErrorCode;
+import com.nhn.gameanvil.sample.protocol.User;
+import com.nhn.gameanvil.sample.protocol.User.CurrencyType;
+import com.nhn.gameanvilcore.connector.common.Config;
+import com.nhn.gameanvilcore.connector.protocol.result.AuthenticationResult;
+import com.nhn.gameanvilcore.connector.protocol.result.CreateRoomResult;
+import com.nhn.gameanvilcore.connector.protocol.result.LeaveRoomResult;
+import com.nhn.gameanvilcore.connector.protocol.result.LoginResult;
+import com.nhn.gameanvilcore.connector.protocol.result.MatchRoomResult;
+import com.nhn.gameanvilcore.connector.protocol.result.MatchUserStartResult;
+import com.nhn.gameanvilcore.connector.tcp.ConnectorSession;
+import com.nhn.gameanvilcore.connector.tcp.ConnectorUser;
+import com.nhn.gameanvilcore.connector.tcp.GameAnvilConnector;
+import com.nhn.gameanvilcore.protocol.Base;
+import com.nhn.gameanvilcore.protocol.Base.ResultCodeMatchRoom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -39,7 +39,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CheckGame {
-    private static GameflexConnector connector;
+    private static GameAnvilConnector connector;
     private List<ConnectorUser> users = new ArrayList<>();
 
     //-------------------------------------------------------------------------------------

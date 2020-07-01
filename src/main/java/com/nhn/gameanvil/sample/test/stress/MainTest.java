@@ -1,4 +1,4 @@
-package com.nhn.gameflex.sample.test.stress;
+package com.nhn.gameanvil.sample.test.stress;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;

@@ -1,17 +1,17 @@
-package com.nhn.gameflex.sample.test.stress._handler;
+package com.nhn.gameanvil.sample.test.stress._handler;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import com.nhn.gameflex.sample.test.common.GameConstants;
-import com.nhn.gameflex.sample.protocol.GameSingle;
-import com.nhn.gameflex.sample.protocol.GameSingle.DifficultyType;
-import com.nhn.gameflex.sample.protocol.Result.ErrorCode;
-import com.nhn.gameflex.sample.protocol.User;
-import com.nhn.gameflexcore.connector.callback.parent.IDispatchPacket;
-import com.nhn.gameflexcore.connector.protocol.Packet;
+import com.nhn.gameanvil.sample.test.common.GameConstants;
+import com.nhn.gameanvil.sample.protocol.GameSingle;
+import com.nhn.gameanvil.sample.protocol.GameSingle.DifficultyType;
+import com.nhn.gameanvil.sample.protocol.Result.ErrorCode;
+import com.nhn.gameanvil.sample.protocol.User;
+import com.nhn.gameanvilcore.connector.callback.parent.IDispatchPacket;
+import com.nhn.gameanvilcore.connector.protocol.Packet;
 import java.io.IOException;
-import com.nhn.gameflex.sample.test.stress.SampleUserClass;
+import com.nhn.gameanvil.sample.test.stress.SampleUserClass;
 
 public class CallbackShuffleDeckRes implements IDispatchPacket<SampleUserClass> {
 

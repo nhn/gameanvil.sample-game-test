@@ -1,14 +1,14 @@
-package com.nhn.gameflex.sample.test.stress._handler;
+package com.nhn.gameanvil.sample.test.stress._handler;
 
 import static org.junit.Assert.assertTrue;
 
-import com.nhn.gameflex.sample.protocol.GameSingle;
-import com.nhn.gameflex.sample.protocol.GameSingle.EndType;
-import com.nhn.gameflex.sample.protocol.GameSingle.TapMsg;
-import com.nhn.gameflexcore.connector.callback.parent.IDispatchPacket;
-import com.nhn.gameflexcore.connector.protocol.Packet;
-import com.nhn.gameflexcore.connector.protocol.result.CreateRoomResult;
-import com.nhn.gameflex.sample.test.stress.SampleUserClass;
+import com.nhn.gameanvil.sample.protocol.GameSingle;
+import com.nhn.gameanvil.sample.protocol.GameSingle.EndType;
+import com.nhn.gameanvil.sample.protocol.GameSingle.TapMsg;
+import com.nhn.gameanvilcore.connector.callback.parent.IDispatchPacket;
+import com.nhn.gameanvilcore.connector.protocol.Packet;
+import com.nhn.gameanvilcore.connector.protocol.result.CreateRoomResult;
+import com.nhn.gameanvil.sample.test.stress.SampleUserClass;
 
 public class CallbackCreateRoomRes implements IDispatchPacket<SampleUserClass> {
 

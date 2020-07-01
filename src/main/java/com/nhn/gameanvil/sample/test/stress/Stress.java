@@ -1,20 +1,20 @@
-package com.nhn.gameflex.sample.test.stress;
+package com.nhn.gameanvil.sample.test.stress;
 
-import com.nhn.gameflex.sample.protocol.Authentication;
-import com.nhn.gameflex.sample.protocol.User;
-import com.nhn.gameflex.sample.test.common.GameConstants;
-import com.nhn.gameflex.sample.test.common.Initializer;
-import com.nhn.gameflex.sample.test.stress._handler.CallbackAuthenticationRes;
-import com.nhn.gameflex.sample.test.stress._handler.CallbackCreateRoomRes;
-import com.nhn.gameflex.sample.test.stress._handler.CallbackLeaveRoomRes;
-import com.nhn.gameflex.sample.test.stress._handler.CallbackLoginRes;
-import com.nhn.gameflex.sample.test.stress._handler.CallbackLogout;
-import com.nhn.gameflex.sample.test.stress._handler.CallbackShuffleDeckRes;
-import com.nhn.gameflex.sample.test.stress._handler.SampleTimeout;
-import com.nhn.gameflexcore.connector.common.Config;
-import com.nhn.gameflexcore.connector.tcp.ConnectorSession;
-import com.nhn.gameflexcore.connector.tcp.GameflexConnector;
-import com.nhn.gameflexcore.connector.tcp.agent.parent.IAsyncConnectorUser;
+import com.nhn.gameanvil.sample.test.stress._handler.CallbackAuthenticationRes;
+import com.nhn.gameanvil.sample.test.stress._handler.CallbackCreateRoomRes;
+import com.nhn.gameanvil.sample.test.stress._handler.CallbackLeaveRoomRes;
+import com.nhn.gameanvil.sample.test.stress._handler.CallbackLoginRes;
+import com.nhn.gameanvil.sample.test.stress._handler.CallbackLogout;
+import com.nhn.gameanvil.sample.test.stress._handler.CallbackShuffleDeckRes;
+import com.nhn.gameanvil.sample.test.stress._handler.SampleTimeout;
+import com.nhn.gameanvil.sample.protocol.Authentication;
+import com.nhn.gameanvil.sample.protocol.User;
+import com.nhn.gameanvil.sample.test.common.GameConstants;
+import com.nhn.gameanvil.sample.test.common.Initializer;
+import com.nhn.gameanvilcore.connector.common.Config;
+import com.nhn.gameanvilcore.connector.tcp.ConnectorSession;
+import com.nhn.gameanvilcore.connector.tcp.GameAnvilConnector;
+import com.nhn.gameanvilcore.connector.tcp.agent.parent.IAsyncConnectorUser;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import org.junit.BeforeClass;
@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Stress {
-    private static GameflexConnector connector;
+    private static GameAnvilConnector connector;
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     //-------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ public class Stress {
 
         // 횟수로 반복
         //connector.repeatByEntire(/* ... */);
-        connector.repeatByIndividual(new GameflexConnector.InitialProtocol() {
+        connector.repeatByIndividual(new GameAnvilConnector.InitialProtocol() {
             @Override
             public void send(IAsyncConnectorUser iUser) {
                 Authentication.AuthenticationReq.Builder authenticationReq = Authentication.AuthenticationReq.newBuilder().setAccessToken("TapTap_AccessToken!!!!");
@@ -89,7 +89,7 @@ public class Stress {
         }, 10);
 
 //        // FORCE_EXIT_TIMEOUT_SEC 시간만큼 반복
-//        connector.repeatByIndividual(new GameflexConnector.InitialProtocol() {
+//        connector.repeatByIndividual(new GameAnvilConnector.InitialProtocol() {
 //            @Override
 //            public void send(IAsyncConnectorUser iUser) {
 //                Authentication.AuthenticationReq.Builder authenticationReq = Authentication.AuthenticationReq.newBuilder().setAccessToken("TapTap_AccessToken!!!!");

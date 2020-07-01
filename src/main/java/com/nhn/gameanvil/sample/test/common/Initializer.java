@@ -1,16 +1,16 @@
-package com.nhn.gameflex.sample.test.common;
+package com.nhn.gameanvil.sample.test.common;
 
-import com.nhn.gameflex.sample.protocol.Authentication;
-import com.nhn.gameflex.sample.protocol.GameMulti;
-import com.nhn.gameflex.sample.protocol.GameSingle;
-import com.nhn.gameflex.sample.protocol.Result;
-import com.nhn.gameflex.sample.protocol.User;
-import com.nhn.gameflexcore.connector.tcp.GameflexConnector;
+import com.nhn.gameanvil.sample.protocol.Authentication;
+import com.nhn.gameanvil.sample.protocol.GameMulti;
+import com.nhn.gameanvil.sample.protocol.GameSingle;
+import com.nhn.gameanvil.sample.protocol.Result;
+import com.nhn.gameanvil.sample.protocol.User;
+import com.nhn.gameanvilcore.connector.tcp.GameAnvilConnector;
 
 public class Initializer {
-    public static GameflexConnector initConnector() {
+    public static GameAnvilConnector initConnector() {
         // 커넥터 생성.
-        GameflexConnector connector = GameflexConnector.getInstance();
+        GameAnvilConnector connector = GameAnvilConnector.getInstance();
 
         // 컨텐츠 프로토콜 등록.
         connector.addProtoBufClass(0, Authentication.class);

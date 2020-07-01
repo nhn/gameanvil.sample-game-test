@@ -10,7 +10,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.nhn.gameflex:gameflex-test-agent:1.0.0-EA" level="project" />
+    <orderEntry type="library" name="Bundled Protobuf Distribution" level="application" />
+    <orderEntry type="library" name="Maven: com.nhn.gameanvil:gameanvil-test-agent:DEV-1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.uuid:java-uuid-generator:3.1.5" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.37.Final" level="project" />

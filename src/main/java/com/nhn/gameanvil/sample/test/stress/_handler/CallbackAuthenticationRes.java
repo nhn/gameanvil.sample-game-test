@@ -1,16 +1,16 @@
-package com.nhn.gameflex.sample.test.stress._handler;
+package com.nhn.gameanvil.sample.test.stress._handler;
 
 import static org.junit.Assert.assertTrue;
 
-import com.nhn.gameflex.sample.test.common.GameConstants;
-import com.nhn.gameflex.sample.protocol.Authentication;
-import com.nhn.gameflex.sample.protocol.Authentication.LoginType;
-import com.nhn.gameflexcore.connector.callback.parent.IDispatchPacket;
-import com.nhn.gameflexcore.connector.protocol.Packet;
-import com.nhn.gameflexcore.connector.protocol.result.AuthenticationResult;
+import com.nhn.gameanvil.sample.test.common.GameConstants;
+import com.nhn.gameanvil.sample.protocol.Authentication;
+import com.nhn.gameanvil.sample.protocol.Authentication.LoginType;
+import com.nhn.gameanvilcore.connector.callback.parent.IDispatchPacket;
+import com.nhn.gameanvilcore.connector.protocol.Packet;
+import com.nhn.gameanvilcore.connector.protocol.result.AuthenticationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.nhn.gameflex.sample.test.stress.SampleUserClass;
+import com.nhn.gameanvil.sample.test.stress.SampleUserClass;
 
 public class CallbackAuthenticationRes implements IDispatchPacket<SampleUserClass> {
 

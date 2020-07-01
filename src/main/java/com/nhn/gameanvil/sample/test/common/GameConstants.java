@@ -1,4 +1,4 @@
-package com.nhn.gameflex.sample.test.common;
+package com.nhn.gameanvil.sample.test.common;
 
 /**
  * 게임에서 사용하는 상수값들 정의

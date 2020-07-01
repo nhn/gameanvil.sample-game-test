@@ -1,9 +1,9 @@
-package com.nhn.gameflex.sample.test.stress._handler;
+package com.nhn.gameanvil.sample.test.stress._handler;
 
-import com.nhn.gameflexcore.connector.callback.parent.IDispatchPacket;
-import com.nhn.gameflexcore.connector.protocol.Packet;
-import com.nhn.gameflexcore.connector.protocol.result.LogoutResult;
-import com.nhn.gameflex.sample.test.stress.SampleUserClass;
+import com.nhn.gameanvilcore.connector.callback.parent.IDispatchPacket;
+import com.nhn.gameanvilcore.connector.protocol.Packet;
+import com.nhn.gameanvilcore.connector.protocol.result.LogoutResult;
+import com.nhn.gameanvil.sample.test.stress.SampleUserClass;
 
 import static org.junit.Assert.assertTrue;
 
