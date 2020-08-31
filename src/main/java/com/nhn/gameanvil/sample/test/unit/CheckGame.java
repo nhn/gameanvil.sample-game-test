@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.nhn.gameanvil.sample.test.common.GameConstants;
-import com.nhn.gameanvil.sample.test.common.Initializer;
 import com.nhn.gameanvil.sample.protocol.Authentication;
 import com.nhn.gameanvil.sample.protocol.Authentication.LoginType;
 import com.nhn.gameanvil.sample.protocol.GameMulti;
@@ -17,6 +15,8 @@ import com.nhn.gameanvil.sample.protocol.GameSingle.TapMsg;
 import com.nhn.gameanvil.sample.protocol.Result.ErrorCode;
 import com.nhn.gameanvil.sample.protocol.User;
 import com.nhn.gameanvil.sample.protocol.User.CurrencyType;
+import com.nhn.gameanvil.sample.test.common.GameConstants;
+import com.nhn.gameanvil.sample.test.common.Initializer;
 import com.nhn.gameanvilcore.connector.common.Config;
 import com.nhn.gameanvilcore.connector.protocol.result.AuthenticationResult;
 import com.nhn.gameanvilcore.connector.protocol.result.CreateRoomResult;
@@ -28,7 +28,7 @@ import com.nhn.gameanvilcore.connector.tcp.ConnectorSession;
 import com.nhn.gameanvilcore.connector.tcp.ConnectorUser;
 import com.nhn.gameanvilcore.connector.tcp.GameAnvilConnector;
 import com.nhn.gameanvilcore.protocol.Base;
-import com.nhn.gameanvilcore.protocol.Base.ResultCodeMatchRoom;
+import com.nhn.gameanvilcore.protocol.Error;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -156,7 +156,7 @@ public class CheckGame {
         for (ConnectorUser user : users) {
             score++;
             MatchRoomResult matchRoomResult = user.matchRoom(GameConstants.GAME_ROOM_TYPE_MULTI_ROOM_MATCH);
-            assertEquals(ResultCodeMatchRoom.MATCH_ROOM_SUCCESS, ResultCodeMatchRoom.forNumber(matchRoomResult.getResultCode()));
+            assertEquals(Error.ErrorCode.MATCH_ROOM_SUCCESS, Error.ErrorCode.forNumber(matchRoomResult.getResultCode()));
             members.add(user);
 
             GameMulti.ScoreUpMsg.Builder scoreUpMsg = GameMulti.ScoreUpMsg.newBuilder();

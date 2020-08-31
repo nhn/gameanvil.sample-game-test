@@ -47,7 +47,7 @@ public class Stress {
         Config.CONCURRENT_USER = 100;
 
         // 부하 테스트 시작시, Bot 유저들에 딜레이를 두고 런칭 시킬 수 있습니다.
-        //Config.RAMP_UP_DELAY_MSEC = 5; // [default 0]
+        Config.RAMP_UP_DELAY_MSEC = 1; // [default 0]
 
         // 커넥터를 생성합니다.
         connector = Initializer.initConnector();
@@ -96,7 +96,6 @@ public class Stress {
 //                iUser.authentication(iUser.getAccountId(), authenticationReq);
 //            }
 //        });
-
     }
 
 }
