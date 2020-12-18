@@ -1,4 +1,4 @@
-package com.nhn.gameanvil.sample.test.stress;
+package com.nhn.gameanvil.sample.test.scenario;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -8,7 +8,7 @@ public class MainTest {
 
     public static void main(String[] args) {
 
-        Result result = JUnitCore.runClasses(Stress.class);
+        Result result = JUnitCore.runClasses(TestScenario.class);
         System.out.println();
 
         for (Failure failure : result.getFailures()) {

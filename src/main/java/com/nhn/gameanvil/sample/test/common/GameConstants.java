@@ -19,22 +19,5 @@ public class GameConstants {
     // 게임 스페이스의 멀티룸 - 스네이크 게임
     public static final String GAME_ROOM_TYPE_MULTI_USER_MATCH = "SnakeRoom";
 
-    // 서비스 이름 - 런칭
-    public static final String SUPPORT_NAME_LAUNCHING = "Launching";
-
-    // 레디스 쓰레드 풀
-    public static final String REDIS_THREAD_POOL = "REDIS_THREAD_POOL";
-
-    // 레디스 접속 정보
-    public static final String REDIS_URL = "10.77.14.22";
-    public static final int REDIS_PORT = 7500;
-
-    // 디비 쓰레드 풀
-    public static final String DB_THREAD_POOL = "DB_THREAD_POOL";
-
-    // 게임베이스 기본 url
-    public static final String GAMEBASE_DEFAULT_URL = "https://api-gamebase.cloud.toast.com";
-
-    // 게임베이스 시크릿키
-    public static final String GAMEBASE_SECRET_KEY = "oNQMhNXW";
+    public static final int WAIT_TIME_OUT = 10000;
 }

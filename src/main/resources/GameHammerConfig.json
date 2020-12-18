@@ -1,0 +1,36 @@
+{
+  "targetServerList": [
+    {
+      "ip": "127.0.0.1",
+      "port": 11200
+    }
+  ],
+  "serviceList" : [
+    {
+      "serviceId" : 1,
+      "serviceName" : "TapTap",
+      "channelIdList": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "loggingServer": {
+    "ip": "127.0.0.1",
+    "port": 28888
+  },
+  "isTestLoggingEnabled": false,
+  "actorCount": 1000,
+  "scenarioLoopCount": 30,
+  "testTimeSeconds": 180,
+  "requestTimeoutSeconds": 3,
+  "pingIntervalSeconds" : 3,
+  "rampUpDelayMillis": 5,
+  "networkThreadCount": 16,
+  "timerThreadCount": 1,
+  "timerTimeUnitMillis": 100,
+  "isTimeoutCallbackEnabled": false,
+  "tcpNoDelay": false
+}
