@@ -30,6 +30,7 @@ public class _4_LoginState extends State<TapTapActor> {
         actor.getUser().login(loginRes -> {
             if (loginRes.isSuccess()) {
                 actor.changeState(_5_CreateRoomState.class);
+//                actor.changeState(_5_MatchUserState.class);
             } else {
                 logger.info(
                     "[{}] Fail - uuid : {}, AccountId : {}\t{}, {}",
@@ -41,7 +42,7 @@ public class _4_LoginState extends State<TapTapActor> {
                 );
                 actor.finish(false);
             }
-        },  GameConstants.GAME_USER_TYPE, TesterConfigLoader.getInstance().getTesterConfig().getServiceInfo(GameConstants.GAME_NAME).getNextChannelId(), loginReq);
+        }, GameConstants.GAME_USER_TYPE, TesterConfigLoader.getInstance().getTesterConfig().getServiceInfo(GameConstants.GAME_NAME).getNextChannelId(), loginReq);
     }
 
     @Override

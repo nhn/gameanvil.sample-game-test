@@ -2,6 +2,7 @@ package com.nhn.gameanvil.sample.test.scenario;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+
 import com.nhn.gameanvil.gamehammer.scenario.ScenarioMachine;
 import com.nhn.gameanvil.gamehammer.scenario.ScenarioTest;
 import com.nhn.gameanvil.gamehammer.tester.Tester;
@@ -10,11 +11,13 @@ import com.nhn.gameanvil.sample.protocol.Authentication;
 import com.nhn.gameanvil.sample.protocol.GameMulti;
 import com.nhn.gameanvil.sample.protocol.GameSingle;
 import com.nhn.gameanvil.sample.protocol.Result;
+import com.nhn.gameanvil.sample.protocol.User;
 import com.nhn.gameanvil.sample.test.scenario.state._1_ConnectState;
 import com.nhn.gameanvil.sample.test.scenario.state._2_RampUpState;
 import com.nhn.gameanvil.sample.test.scenario.state._3_AuthenticationState;
 import com.nhn.gameanvil.sample.test.scenario.state._4_LoginState;
 import com.nhn.gameanvil.sample.test.scenario.state._5_CreateRoomState;
+import com.nhn.gameanvil.sample.test.scenario.state._5_MatchUserState;
 import com.nhn.gameanvil.sample.test.scenario.state._6_PlayGameState;
 import com.nhn.gameanvil.sample.test.scenario.state._7_LeaveRoomState;
 import com.nhn.gameanvil.sample.test.scenario.state._8_LogoutState;
@@ -58,7 +61,7 @@ public class TestScenario {
             .addProtoBufClass(1, GameMulti.getDescriptor())
             .addProtoBufClass(2, GameSingle.getDescriptor())
             .addProtoBufClass(3, Result.getDescriptor())
-            .addProtoBufClass(4, com.nhn.gameanvil.sample.protocol.User.getDescriptor());
+            .addProtoBufClass(4, User.getDescriptor());
     }
 
     private static void initScenario() {
@@ -76,6 +79,7 @@ public class TestScenario {
         scenario.addState(new _3_AuthenticationState());
         scenario.addState(new _4_LoginState());
         scenario.addState(new _5_CreateRoomState());
+//        scenario.addState(new _5_MatchUserState());
         scenario.addState(new _6_PlayGameState());
         scenario.addState(new _7_LeaveRoomState());
         scenario.addState(new _8_LogoutState());

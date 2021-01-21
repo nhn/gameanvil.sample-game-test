@@ -22,8 +22,8 @@
     "port": 28888
   },
   "isTestLoggingEnabled": false,
-  "actorCount": 1000,
-  "scenarioLoopCount": 30,
+  "actorCount": 3000,
+  "scenarioLoopCount": -1,
   "testTimeSeconds": 180,
   "requestTimeoutSeconds": 3,
   "pingIntervalSeconds" : 3,
