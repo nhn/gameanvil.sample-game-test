@@ -17,7 +17,7 @@ public class _8_LogoutState extends State<TapTapActor> {
             if (result.isSuccess()) {
                 actor.finish(true);
             } else {
-                logger.info(
+                logger.warn(
                     "[{}] Fail - uuid : {}, AccountId : {}\t{}, {}",
                     getStateName(),
                     actor.getConnection().getUuid(),

@@ -2,9 +2,9 @@ package com.nhn.gameanvil.sample.test.scenario.state;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import com.nhn.gameanvil.gamehammer.config.TesterConfigLoader;
+import com.nhn.gameanvil.gamehammer.config.ConfigLoader;
 import com.nhn.gameanvil.gamehammer.scenario.State;
-import com.nhn.gameanvil.gamehammer.tester.ResultConnect.ResultCodeConnect;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultConnect.ResultCodeConnect;
 import com.nhn.gameanvil.sample.test.common.GameConstants;
 import com.nhn.gameanvil.sample.test.scenario.TapTapActor;
 import org.slf4j.Logger;
@@ -36,11 +36,11 @@ public class _1_ConnectState extends State<TapTapActor> {
         } else {
             long connectTime = actor.getCurrTime();
             // 연결 요청
-            actor.getConnection().connect(TesterConfigLoader.getInstance().getTesterConfig().getNextTargetServer(), resultConnect -> {
+            actor.getConnection().connect(ConfigLoader.getInstance().getTesterConfig().getNextTargetServer(), resultConnect -> {
                 if (ResultCodeConnect.CONNECT_SUCCESS == resultConnect.getResultCode()) {
                     actor.changeState(_2_RampUpState.class);
                 } else {
-                    logger.info("[{}] Fail - UUID : {}, errorCode : {}, resultCode : {}, socketException : {}, elapsedTime : {}",
+                    logger.warn("[{}] Fail - UUID : {}, errorCode : {}, resultCode : {}, socketException : {}, elapsedTime : {}",
                         getStateName(),
                         actor.getConnection().getUuid(),
                         resultConnect.getErrorCode(),

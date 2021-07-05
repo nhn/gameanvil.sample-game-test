@@ -27,7 +27,7 @@ public class _5_CreateRoomState extends State<TapTapActor> {
             if (createRoomResult.isSuccess()) {
                 actor.changeState(_6_PlayGameState.class);
             } else {
-                logger.info(
+                logger.warn(
                     "[{}] Fail - uuid : {}, AccountId : {}\t{}, {}",
                     getStateName(),
                     actor.getConnection().getUuid(),

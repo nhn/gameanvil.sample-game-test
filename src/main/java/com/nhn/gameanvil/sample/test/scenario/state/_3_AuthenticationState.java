@@ -25,7 +25,7 @@ public class _3_AuthenticationState extends State<TapTapActor> {
             if (authenticationResult.isSuccess()) {
                 actor.changeState(_4_LoginState.class);
             } else {
-                logger.info("[{}] Fail - uuid : {}, AccountId : {} \t{}, {}",
+                logger.warn("[{}] Fail - uuid : {}, AccountId : {} \t{}, {}",
                     getStateName(),
                     actor.getConnection().getUuid(),
                     actor.getConnection().getUuid(),

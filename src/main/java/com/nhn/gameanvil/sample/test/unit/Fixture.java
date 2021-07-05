@@ -6,19 +6,19 @@ import static org.junit.Assert.assertTrue;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import com.google.protobuf.GeneratedMessageV3;
+import com.nhn.gameanvil.gamehammer.config.RemoteInfo;
 import com.nhn.gameanvil.gamehammer.tester.Connection;
-import com.nhn.gameanvil.gamehammer.tester.RemoteInfo;
-import com.nhn.gameanvil.gamehammer.tester.ResultAuthentication;
-import com.nhn.gameanvil.gamehammer.tester.ResultConnect;
-import com.nhn.gameanvil.gamehammer.tester.ResultConnect.ResultCodeConnect;
-import com.nhn.gameanvil.gamehammer.tester.ResultCreateRoom;
-import com.nhn.gameanvil.gamehammer.tester.ResultLeaveRoom;
-import com.nhn.gameanvil.gamehammer.tester.ResultLogin;
-import com.nhn.gameanvil.gamehammer.tester.ResultLogout;
-import com.nhn.gameanvil.gamehammer.tester.ResultMatchRoom;
-import com.nhn.gameanvil.gamehammer.tester.ResultMatchUserStart;
 import com.nhn.gameanvil.gamehammer.tester.Tester;
 import com.nhn.gameanvil.gamehammer.tester.User;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultAuthentication;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultConnect;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultConnect.ResultCodeConnect;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultCreateRoom;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultLeaveRoom;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultLogin;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultLogout;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultMatchRoom;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultMatchUserStart;
 import com.nhn.gameanvil.gamehammer.tool.UuidGenerator;
 import com.nhn.gameanvil.sample.protocol.Authentication;
 import com.nhn.gameanvil.sample.protocol.Authentication.LoginType;
@@ -95,7 +95,7 @@ public class Fixture {
         }
 
         tester = Tester.newBuilder()
-            .addRemoteInfo(new RemoteInfo(ipAddress, port))
+            .addTargetServer(new RemoteInfo(ipAddress, port))
             .setDefaultPacketTimeoutSeconds(3)
             .addProtoBufClass(0, Authentication.getDescriptor())
             .addProtoBufClass(1, GameMulti.getDescriptor())
@@ -125,15 +125,11 @@ public class Fixture {
 
     // 커넥션 연결
     protected ResultConnect connect(Connection connection) {
-        Future<ResultConnect> future = connection.connect(connection.getConfig().getNextRemoteInfo());
+        Future<ResultConnect> future = connection.connect(connection.getConfig().getNextTargetServer());
         try {
             return future.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            logger.error("InterruptedException", e);
-        } catch (ExecutionException e) {
-            logger.error("ExecutionException", e);
-        } catch (TimeoutException e) {
-            logger.error("TimeoutException", e);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            logger.error("Fixture::connect()", e);
         }
         return null;
     }
@@ -144,7 +140,7 @@ public class Fixture {
         try {
             return completableFuture.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            logger.error("[Future] - ", e);
+            logger.error("Fixture::authentication()", e);
         }
         return null;
     }
@@ -155,7 +151,7 @@ public class Fixture {
         try {
             return completableFuture.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            logger.error("[Future] - ", e);
+            logger.error("Fixture::login()", e);
         }
         return null;
     }
@@ -167,7 +163,7 @@ public class Fixture {
         try {
             return completableFuture.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            logger.error("[Future] - ", e);
+            logger.error("Fixture::logout()", e);
         }
 
         return null;
@@ -196,7 +192,7 @@ public class Fixture {
         try {
             return completableFuture.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            logger.error("[Future] - ", e);
+            logger.error("Fixture::createRoom()", e);
         }
 
         return null;
@@ -209,34 +205,35 @@ public class Fixture {
         try {
             return completableFuture.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            logger.error("[Future] - ", e);
+            logger.error("Fixture::leaveRoom()", e);
         }
         return null;
     }
 
     // 매치룸 요청
-    protected ResultMatchRoom matchRoom(User user, String roomType, boolean isCreate, boolean isMoveRoom, GeneratedMessageV3.Builder<?>... sendPayloads) {
-        Future<ResultMatchRoom> completableFuture = user.matchRoom(roomType, isCreate, isMoveRoom, sendPayloads);
+    protected ResultMatchRoom matchRoom(User user, String roomType, String matchingGroup, String matchingUserCategory, boolean isCreate, boolean isMoveRoom, GeneratedMessageV3.Builder<?>... sendPayloads) {
+        Future<ResultMatchRoom> completableFuture = user.matchRoom(roomType, matchingGroup, matchingUserCategory, isCreate, isMoveRoom, sendPayloads);
 
         try {
             return completableFuture.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            logger.error("[Future] - ", e);
+            logger.error("Fixture::matchRoom()", e);
         }
 
         return null;
     }
 
     // 유저 매치 요청
-    protected ResultMatchUserStart matchUserStart(User user, String roomType, GeneratedMessageV3.Builder<?>... sendPayloads) {
-        Future<ResultMatchUserStart> completableFuture = user.matchUserStart(roomType, sendPayloads);
+    protected ResultMatchUserStart matchUserStart(User user, String roomType, String matchingGroup, GeneratedMessageV3.Builder<?>... sendPayloads) {
+        Future<ResultMatchUserStart> completableFuture = user.matchUserStart(roomType, matchingGroup, sendPayloads);
 
         try {
             return completableFuture.get(GameConstants.WAIT_TIME_OUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            logger.error("[Future] - ", e);
+            logger.error("Fixture::matchUserStart()", e);
         }
 
         return null;
     }
+
 }

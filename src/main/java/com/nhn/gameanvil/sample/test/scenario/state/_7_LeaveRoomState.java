@@ -24,7 +24,7 @@ public class _7_LeaveRoomState extends State<TapTapActor> {
             if (leaveRoomResult.isSuccess()) {
                 actor.changeState(_8_LogoutState.class);
             } else {
-                logger.info(
+                logger.warn(
                     "[{}] Fail - uuid : {}, AccountId : {}\t{}, {}",
                     getStateName(),
                     actor.getConnection().getUuid(),

@@ -34,7 +34,7 @@
     <dependency>
       <groupId>com.nhn.gameanvil</groupId>
       <artifactId>gamehammer</artifactId>
-      <version>1.0.0-jdk8</version>
+      <version>DEV-1.0.1-jdk8</version>
     </dependency>
 
     <!-- junit -->

@@ -5,7 +5,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 import com.nhn.gameanvil.gamehammer.scenario.ScenarioMachine;
 import com.nhn.gameanvil.gamehammer.scenario.ScenarioTest;
 import com.nhn.gameanvil.gamehammer.tester.Tester;
-import com.nhn.gameanvil.gamehammer.tester.TimeoutStatistics;
 import com.nhn.gameanvil.sample.protocol.Authentication;
 import com.nhn.gameanvil.sample.protocol.GameMulti;
 import com.nhn.gameanvil.sample.protocol.GameSingle;
@@ -33,6 +32,15 @@ public class TestScenario {
         initScenario();
     }
 
+    private int getTestId() {
+        String strTestId = System.getProperty("testId");
+        try {
+            return Integer.parseInt(strTestId);
+        } catch (Exception e) {
+            return (int)(System.currentTimeMillis() / 1000);
+        }
+    }
+
     @Test
     public void scenarioTest() {
         // 테스터 생성
@@ -40,7 +48,7 @@ public class TestScenario {
 
         // 테스트 시작
         logger.info("Test Start!!!");
-        scenarioTest.start(tester,
+        scenarioTest.start(getTestId(), tester,
             TapTapActor.class,
             _1_ConnectState.class,
             false
@@ -48,7 +56,6 @@ public class TestScenario {
 
         // 테스트 결과 출력
         logger.info(scenarioTest.printStatistics("Finished"));
-        logger.info(TimeoutStatistics.getInstance().printClientTimeout());
     }
 
     private static void initConfig() {

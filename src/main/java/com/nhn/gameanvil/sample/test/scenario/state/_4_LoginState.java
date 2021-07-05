@@ -2,7 +2,7 @@ package com.nhn.gameanvil.sample.test.scenario.state;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import com.nhn.gameanvil.gamehammer.config.TesterConfigLoader;
+import com.nhn.gameanvil.gamehammer.config.ConfigLoader;
 import com.nhn.gameanvil.gamehammer.scenario.State;
 import com.nhn.gameanvil.sample.protocol.Authentication;
 import com.nhn.gameanvil.sample.protocol.Authentication.LoginType;
@@ -31,7 +31,7 @@ public class _4_LoginState extends State<TapTapActor> {
             if (loginRes.isSuccess()) {
                 actor.changeState(_5_CreateRoomState.class);
             } else {
-                logger.info(
+                logger.warn(
                     "[{}] Fail - uuid : {}, AccountId : {}\t{}, {}",
                     getStateName(),
                     actor.getConnection().getUuid(),
@@ -41,7 +41,7 @@ public class _4_LoginState extends State<TapTapActor> {
                 );
                 actor.finish(false);
             }
-        },  GameConstants.GAME_USER_TYPE, TesterConfigLoader.getInstance().getTesterConfig().getServiceInfo(GameConstants.GAME_NAME).getNextChannelId(), loginReq);
+        }, GameConstants.GAME_USER_TYPE, ConfigLoader.getInstance().getTesterConfig().getServiceInfo(GameConstants.GAME_NAME).getNextChannelId(), loginReq);
     }
 
     @Override

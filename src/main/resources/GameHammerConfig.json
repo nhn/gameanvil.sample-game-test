@@ -2,7 +2,7 @@
   "targetServerList": [
     {
       "ip": "127.0.0.1",
-      "port": 11200
+      "port": 18200
     }
   ],
   "serviceList" : [
@@ -17,14 +17,10 @@
       ]
     }
   ],
-  "loggingServer": {
-    "ip": "127.0.0.1",
-    "port": 28888
-  },
   "isTestLoggingEnabled": false,
-  "actorCount": 1000,
+  "actorCount": 100,
   "scenarioLoopCount": 30,
-  "testTimeSeconds": 180,
+  "testTimeSeconds": 60,
   "requestTimeoutSeconds": 3,
   "pingIntervalSeconds" : 3,
   "rampUpDelayMillis": 5,

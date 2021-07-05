@@ -7,13 +7,13 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.slf4j.LoggerFactory.getLogger;
 
-import com.nhn.gameanvil.gamehammer.tester.PacketResult;
-import com.nhn.gameanvil.gamehammer.tester.ResultCreateRoom;
-import com.nhn.gameanvil.gamehammer.tester.ResultLeaveRoom;
-import com.nhn.gameanvil.gamehammer.tester.ResultLogout;
-import com.nhn.gameanvil.gamehammer.tester.ResultMatchRoom;
-import com.nhn.gameanvil.gamehammer.tester.ResultMatchUserStart;
 import com.nhn.gameanvil.gamehammer.tester.User;
+import com.nhn.gameanvil.gamehammer.tester.result.PacketResult;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultCreateRoom;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultLeaveRoom;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultLogout;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultMatchRoom;
+import com.nhn.gameanvil.gamehammer.tester.result.ResultMatchUserStart;
 import com.nhn.gameanvil.sample.protocol.GameMulti;
 import com.nhn.gameanvil.sample.protocol.GameMulti.TapBirdUserData;
 import com.nhn.gameanvil.sample.protocol.GameSingle;
@@ -45,7 +45,7 @@ public class CheckGame extends Fixture {
     @BeforeClass
     public static void beforeClass() {
         // 테스트 하려는 서버의 IP 와 Port 를 지정합니다.
-        initConnector("127.0.0.1", 11200);
+        initConnector("127.0.0.1", 18200);
     }
 
     @AfterClass
@@ -148,7 +148,7 @@ public class CheckGame extends Fixture {
                         assertFalse(userData.getUserData().getId().isEmpty());
                     }
                 } catch (IOException e) {
-                    logger.error("BroadcastTapBirdMsg parse Error", e);
+                    logger.error("CheckGame::unlimitedTapGamePlay()", e);
                 }
 
                 assertTrue(packetResult.isSuccess());
@@ -156,7 +156,7 @@ public class CheckGame extends Fixture {
 
             score++;
             // 매치룸 요청
-            ResultMatchRoom resultMatchRoom = matchRoom(user, GameConstants.GAME_ROOM_TYPE_MULTI_ROOM_MATCH, true, false);
+            ResultMatchRoom resultMatchRoom = matchRoom(user, GameConstants.GAME_ROOM_TYPE_MULTI_ROOM_MATCH, "UNLIMITED_TAP", "", true, false);
             assertTrue(resultMatchRoom.isSuccess());
             assertNotEquals(0, resultMatchRoom.getRoomId());
 
@@ -200,7 +200,7 @@ public class CheckGame extends Fixture {
                     assertTrue(message != null);
                     assertFalse(message.getFoodData().getIdx() < 0);
                 } catch (IOException e) {
-                    logger.error("SnakeFoodMsg parse Error", e);
+                    logger.error("CheckGame::snakeGamePlay()", e);
                 }
 
                 assertTrue(packetResult.isSuccess());
@@ -214,7 +214,7 @@ public class CheckGame extends Fixture {
                     assertTrue(message != null);
                     assertFalse(message.getUserData().getBaseData().getId().isEmpty());
                 } catch (IOException e) {
-                    logger.error("SnakeUserMsg parse Error", e);
+                    logger.error("CheckGame::snakeGamePlay()", e);
                 }
 
                 assertTrue(packetResult.isSuccess());
@@ -223,7 +223,7 @@ public class CheckGame extends Fixture {
             score++;
 
             // 유저 매치 요청
-            ResultMatchUserStart resultMatchUserStart = matchUserStart(user, GameConstants.GAME_ROOM_TYPE_MULTI_USER_MATCH);
+            ResultMatchUserStart resultMatchUserStart = matchUserStart(user, GameConstants.GAME_ROOM_TYPE_MULTI_USER_MATCH, "");
             assertTrue(resultMatchUserStart.isSuccess());
         }
 
