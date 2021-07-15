@@ -1,3 +1,3 @@
-# sample-game-test
+# (Official) [Type A] Reference GameHammer project (Functional & Stress test)
 
-(Official) [Type A] Reference GameHammer project (Functional & Stress test)
+
