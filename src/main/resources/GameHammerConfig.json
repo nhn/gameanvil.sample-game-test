@@ -2,7 +2,8 @@
   "targetServerList": [
     {
       "ip": "127.0.0.1",
-      "port": 11200
+      "port": 11200,
+      "useSecureSocket": false
     }
   ],
   "serviceList" : [

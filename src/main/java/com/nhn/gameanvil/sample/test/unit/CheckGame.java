@@ -45,7 +45,7 @@ public class CheckGame extends Fixture {
     @BeforeClass
     public static void beforeClass() {
         // 테스트 하려는 서버의 IP 와 Port 를 지정합니다.
-        initConnector("127.0.0.1", 11200);
+        initConnector("127.0.0.1", 11200, false);
     }
 
     @AfterClass
