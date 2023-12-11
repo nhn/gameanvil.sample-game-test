@@ -97,11 +97,11 @@ public class Fixture {
         tester = Tester.newBuilder()
             .addTargetServer(new RemoteInfo(ipAddress, port))
             .setDefaultPacketTimeoutSeconds(3)
-            .addProtoBufClass(0, Authentication.getDescriptor())
-            .addProtoBufClass(1, GameMulti.getDescriptor())
-            .addProtoBufClass(2, GameSingle.getDescriptor())
-            .addProtoBufClass(3, Result.getDescriptor())
-            .addProtoBufClass(4, com.nhn.gameanvil.sample.protocol.User.getDescriptor())
+            .addProtoBufClass(Authentication.getDescriptor())
+            .addProtoBufClass(GameMulti.getDescriptor())
+            .addProtoBufClass(GameSingle.getDescriptor())
+            .addProtoBufClass(Result.getDescriptor())
+            .addProtoBufClass(com.nhn.gameanvil.sample.protocol.User.getDescriptor())
             .Build();
     }
 

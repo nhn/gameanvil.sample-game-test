@@ -1,0 +1,65 @@
+import java.nio.file.Paths
+
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+group = 'com.nhn.gameanvil.gamehammer'
+version = '1.4.0'
+java.sourceCompatibility = JavaVersion.VERSION_11
+java.targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+// standalone jar 을 생성합니다.
+jar {
+    baseName = "sample_game_server_test"
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    manifest {
+        attributes 'Main-Class': 'com.nhn.gameanvil.sample.test.scenario.MainTest'
+    }
+
+    from {
+        configurations.compileClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+// GameAnvil 서버를 실행합니다
+task runMain(dependsOn: build, type: JavaExec) {
+    jvmArgs = [
+            "-Xms6g",
+            "-Xmx6g",
+            "-XX:+UseG1GC"]
+    main = 'com.nhn.gameanvil.sample.test.scenario.MainTest'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+compileJava {
+    dependsOn.processResources
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+
+dependencies {
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'org.apache.commons:commons-lang3:3.10'
+    implementation 'junit:junit:4.12'
+    api 'com.nhn.gameanvil:gamehammer:1.4.0-jdk11'
+}

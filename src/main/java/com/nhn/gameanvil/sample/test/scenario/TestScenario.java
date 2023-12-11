@@ -61,11 +61,11 @@ public class TestScenario {
     private static void initConfig() {
         // 테스터 기본 프로토콜 설정
         testerBuilder = Tester.newBuilderWithConfig();
-        testerBuilder.addProtoBufClass(0, Authentication.getDescriptor())
-            .addProtoBufClass(1, GameMulti.getDescriptor())
-            .addProtoBufClass(2, GameSingle.getDescriptor())
-            .addProtoBufClass(3, Result.getDescriptor())
-            .addProtoBufClass(4, com.nhn.gameanvil.sample.protocol.User.getDescriptor());
+        testerBuilder.addProtoBufClass(Authentication.getDescriptor())
+            .addProtoBufClass(GameMulti.getDescriptor())
+            .addProtoBufClass(GameSingle.getDescriptor())
+            .addProtoBufClass(Result.getDescriptor())
+            .addProtoBufClass(com.nhn.gameanvil.sample.protocol.User.getDescriptor());
     }
 
     private static void initScenario() {
