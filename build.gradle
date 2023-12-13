@@ -8,7 +8,7 @@ plugins {
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 group = 'com.nhn.gameanvil.gamehammer'
-version = '1.4.0'
+version = '1.4.1'
 java.sourceCompatibility = JavaVersion.VERSION_11
 java.targetCompatibility = JavaVersion.VERSION_11
 
@@ -61,5 +61,5 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.2.3'
     implementation 'org.apache.commons:commons-lang3:3.10'
     implementation 'junit:junit:4.12'
-    api 'com.nhn.gameanvil:gamehammer:1.4.0-jdk11'
+    api 'com.nhn.gameanvil:gamehammer:1.4.1-jdk11'
 }
